@@ -22,3 +22,8 @@
   font-weight: 500;
   color: white;
 }
+
+.header-contents p{
+  color: white;
+  font-size: 1vw;
+}
