@@ -27,7 +27,13 @@ const Footer = () => {
             <li>Privacy policy</li>
           </ul>
         </div>
-        <div className="footer-content-right"></div>
+        <div className="footer-content-right">
+          <h2>GET IN TOUCH</h2>
+          <ul>
+            <li>+1-123-456-7890</li>
+            <li>contact@tomato.com</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
