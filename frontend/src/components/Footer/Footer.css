@@ -27,3 +27,7 @@
   list-style: none;
   margin-bottom: 10px;
 }
+
+.footer-content-right h2, .footer-content-center h2{
+  color: white;
+}
