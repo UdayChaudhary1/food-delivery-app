@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import './LoginPopup.css'
-import { assets } from '../../assets/assets';
+import { useState } from "react";
+import "./LoginPopup.css";
+import { assets } from "../../assets/assets";
 
-const LoginPopup = ({setShowLogin}) => {
-
-  const [currState, setCurrState] = useState("Sign Up")
+const LoginPopup = ({ setShowLogin }) => {
+  const [currState, setCurrState] = useState("Sign Up");
 
   return (
     <div className="Login-popup">
@@ -31,14 +30,17 @@ const LoginPopup = ({setShowLogin}) => {
           <input type="checkbox" />
           <p>By continuing, you agree to our Terms of Use and Privacy Policy</p>
         </div>
-        <p>
-          Create a new Account? <span>Click here</span>
-        </p>
-        <p>
-          Already have an Account? <span>Login here</span>
-        </p>
+        {currState === "Login" ? (
+          <p>
+            Create a new Account? <span>Click here</span>
+          </p>
+        ) : (
+          <p>
+            Already have an Account? <span>Login here</span>
+          </p>
+        )}
       </form>
     </div>
   );
-}
-export default LoginPopup
+};
+export default LoginPopup;
