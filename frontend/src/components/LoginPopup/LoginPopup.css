@@ -28,3 +28,8 @@
   align-items: center;
   color: black;
 }
+
+.login-popup-title img{
+  width: 16px;
+  cursor: pointer;
+}
