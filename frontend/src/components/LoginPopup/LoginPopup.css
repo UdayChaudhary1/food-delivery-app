@@ -56,3 +56,10 @@
   font-size: 15px;
   cursor: pointer;
 }
+
+.login-popup-condition{
+  display: flex;
+  align-items: start;
+  gap: 8px;
+  margin-top: -15px;
+}
