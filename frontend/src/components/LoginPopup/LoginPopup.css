@@ -33,3 +33,9 @@
   width: 16px;
   cursor: pointer;
 }
+
+.login-popup-inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
