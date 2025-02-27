@@ -19,12 +19,19 @@
   width: 50px;
 }
 
-.cart hr{
+.cart hr {
   height: 1px;
   background-color: #e2e2e2;
   border: none;
 }
 
-.cart-items-item .cross{
+.cart-items-item .cross {
   cursor: pointer;
+}
+
+.cart-bottom {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  gap: max(12vw, 20px);
 }
