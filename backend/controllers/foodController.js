@@ -1,11 +1,11 @@
-import foodModel from "../models/foodModel.js";
+import FoodModel from "../models/foodModel.js";
 import fs from "fs";
 
 //add food item
 const addFood = async (req, res) => {
   let image_filename = `${req.file.filename}`;
 
-  const Food = new foodModel({
+  const Food = new FoodModel({
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
@@ -24,7 +24,7 @@ const addFood = async (req, res) => {
 // all food list
 const listFood = async (req, res) => {
   try {
-    const foods = await foodModel.find({});
+    const foods = await FoodModel.find({});
     res.json({ success: true, data: foods });
   } catch (error) {
     console.log(error);
@@ -32,4 +32,17 @@ const listFood = async (req, res) => {
   }
 };
 
-export { addFood, listFood };
+// remove food item
+const removeFood = async (req, res) => {
+  try {
+    const food = await FoodModel.findById(req.body.id);
+    fs.unlink(`uploads/${food.image}`, () => {});
+    await FoodModel.findByIdAndDelete(req.body.id);
+    res.json({ success: true, message: "Food item removed successfully" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+};
+
+export { addFood, listFood, removeFood };
