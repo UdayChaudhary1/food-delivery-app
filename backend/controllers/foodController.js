@@ -15,10 +15,21 @@ const addFood = async (req, res) => {
 
   try {
     await Food.save();
-    res.json({success: true, message: "Food item added successfully"});
+    res.json({ success: true, message: "Food item added successfully" });
   } catch (error) {
     res.json({ success: false, message: "Error" });
   }
 };
 
-export { addFood };
+// all food list
+const listFood = async (req, res) => {
+  try {
+    const foods = await foodModel.find({});
+    res.json({ success: true, data: foods });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+};
+
+export { addFood, listFood };
