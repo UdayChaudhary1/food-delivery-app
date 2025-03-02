@@ -4,3 +4,11 @@
   border: 1.5px solid #a9a9a9;
   border-top: 0;
 }
+
+.sidebar-options{
+  padding: 50px;
+  padding-left: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
