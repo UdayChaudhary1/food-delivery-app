@@ -7,7 +7,7 @@ const Add = () => {
   return (
     <div className="add">
       <form className="flex-col">
-        <div className="add-image-upload flex-col">
+        <div className="add-img-upload flex-col">
           <p>upload image</p>
           <label htmlFor="image">
             <img
