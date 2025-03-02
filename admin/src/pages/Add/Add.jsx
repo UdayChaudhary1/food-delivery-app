@@ -4,6 +4,12 @@ import "./Add.css";
 
 const Add = () => {
   const [image, setImage] = useState(false);
+  const [data, setData] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category: "Salad",
+  });
   return (
     <div className="add">
       <form className="flex-col">
