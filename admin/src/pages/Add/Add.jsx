@@ -1,16 +1,29 @@
-import { assets } from '../../assets/assets';
-import './Add.css'
+import { useState } from "react";
+import { assets } from "../../assets/assets";
+import "./Add.css";
 
 const Add = () => {
+  const [image, setImage] = useState(false);
   return (
     <div className="add">
       <form className="flex-col">
         <div className="add-image-upload flex-col">
           <p>upload image</p>
           <label htmlFor="image">
-            <img src={assets.upload_area} alt="" />
+            <img
+              src={image ? URL.createObjectURL(image) : assets.upload_area}
+              alt=""
+            />
           </label>
-          <input type="file" id="image" hidden required />
+          <input
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+            }}
+            type="file"
+            id="image"
+            hidden
+            required
+          />
         </div>
         <div className="add-product-name flex-col">
           <p>product name</p>
@@ -41,12 +54,14 @@ const Add = () => {
           </div>
           <div className="add-price flex-col">
             <p>Product price</p>
-            <input type="Number" name='price' placeholder='$20' />
+            <input type="Number" name="price" placeholder="$20" />
           </div>
         </div>
-        <button type='submit' className='add-btn'>ADD</button>
+        <button type="submit" className="add-btn">
+          ADD
+        </button>
       </form>
     </div>
   );
-}
-export default Add
+};
+export default Add;
