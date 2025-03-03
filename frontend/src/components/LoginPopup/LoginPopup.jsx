@@ -3,10 +3,21 @@ import "./LoginPopup.css";
 import { assets } from "../../assets/assets";
 
 const LoginPopup = ({ setShowLogin }) => {
-  const [currState, setCurrState] = useState("Sign Up");
+  const [currState, setCurrState] = useState("Login");
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const onChangeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData((data) => ({ ...data, [name]: value }));
+  };
 
   return (
-    <div className="Login-popup">
+    <div className="login-popup">
       <form className="login-popup-container">
         <div className="login-popup-title">
           <h2>{currState}</h2>
@@ -17,13 +28,34 @@ const LoginPopup = ({ setShowLogin }) => {
           />
         </div>
         <div className="login-popup-inputs">
-          {currState === "login" ? (
+          {currState === "Login" ? (
             <></>
           ) : (
-            <input type="text" placeholder="Your name" required />
+            <input
+              name="name"
+              onChange={onChangeHandler}
+              value={data.name}
+              type="text"
+              placeholder="Your name"
+              required
+            />
           )}
-          <input type="email" placeholder="Your email" required />
-          <input type="password" placeholder="Password" required />
+          <input
+            name="email"
+            onChange={onChangeHandler}
+            value={data.email}
+            type="email"
+            placeholder="Your email"
+            required
+          />
+          <input
+            name="password"
+            onChange={onChangeHandler}
+            value={data.password}
+            type="password"
+            placeholder="Password"
+            required
+          />
         </div>
         <button>{currState === "Sign Up" ? "Create Account" : "Login"}</button>
         <div className="login-popup-condition">
@@ -32,11 +64,13 @@ const LoginPopup = ({ setShowLogin }) => {
         </div>
         {currState === "Login" ? (
           <p>
-            Create a new Account? <span onClick={() => setCurrState("Sign Up")}>Click here</span>
+            Create a new Account?{" "}
+            <span onClick={() => setCurrState("Sign Up")}>Click here</span>
           </p>
         ) : (
           <p>
-            Already have an Account? <span onClick={() => setCurrState("Login")}>Login here</span>
+            Already have an Account?{" "}
+            <span onClick={() => setCurrState("Login")}>Login here</span>
           </p>
         )}
       </form>
