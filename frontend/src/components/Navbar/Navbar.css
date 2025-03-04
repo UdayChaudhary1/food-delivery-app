@@ -123,6 +123,13 @@
   list-style: none;
 }
 
+.nav-profile-dropdown li{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
 @media (max-width: 750px) {
   .navbar-menu{
     display: none;
