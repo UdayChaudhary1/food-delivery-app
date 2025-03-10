@@ -9,21 +9,17 @@
   font-size: 14px;
   color: #505050;
 }
-
 .order-item-food,
 .order-item-name {
   font-weight: 600;
 }
-
 .order-item-name {
   margin-top: 30px;
   margin-bottom: 5px;
 }
-
 .order-item-address {
   margin-bottom: 10px;
 }
-
 .order-item select {
   background-color: #ffe8e4;
   border: 1px solid tomato;
@@ -31,7 +27,6 @@
   padding: 10px;
   outline: none;
 }
-
 @media (max-width: 1000px) {
   .order-item {
     font-size: 12px;

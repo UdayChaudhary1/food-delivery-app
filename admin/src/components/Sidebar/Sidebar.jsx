@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom";
-import { assets } from "../../assets/assets";
 import "./Sidebar.css";
+import { assets } from "../../assets/assets";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -22,4 +22,5 @@ const Sidebar = () => {
     </div>
   );
 };
+
 export default Sidebar;

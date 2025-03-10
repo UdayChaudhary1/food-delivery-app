@@ -1,20 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import "./MyOrders.css";
-import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
+import { StoreContext } from "../../Context/StoreContext";
 import { assets } from "../../assets/assets";
 
 const MyOrders = () => {
-  const { url, token } = useContext(StoreContext);
   const [data, setData] = useState([]);
+  const { url, token, currency } = useContext(StoreContext);
 
   const fetchOrders = async () => {
     const response = await axios.post(
-      `${url}/api/order/userorders`,
+      url + "/api/order/userorders",
       {},
-      {
-        headers: { token },
-      }
+      { headers: { token } }
     );
     setData(response.data.data);
   };
@@ -42,11 +40,13 @@ const MyOrders = () => {
                   }
                 })}
               </p>
-              <p>${order.amount}.00</p>
-              <p>Items:{order.items.length}</p>
               <p>
-                <span>&#x25cf;</span>
-                <b>{order.status}</b>
+                {currency}
+                {order.amount}.00
+              </p>
+              <p>Items: {order.items.length}</p>
+              <p>
+                <span>&#x25cf;</span> <b>{order.status}</b>
               </p>
               <button onClick={fetchOrders}>Track Order</button>
             </div>
@@ -56,4 +56,5 @@ const MyOrders = () => {
     </div>
   );
 };
+
 export default MyOrders;

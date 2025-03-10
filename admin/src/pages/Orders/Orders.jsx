@@ -1,30 +1,29 @@
 import { useEffect, useState } from "react";
 import "./Orders.css";
-import axios from "axios";
 import { toast } from "react-toastify";
-import { assets } from "../../../../frontend/src/assets/assets";
+import axios from "axios";
+import { assets, url, currency } from "../../assets/assets";
 
-const Orders = ({ url }) => {
+const Order = () => {
   const [orders, setOrders] = useState([]);
 
   const fetchAllOrders = async () => {
     const response = await axios.get(`${url}/api/order/list`);
     if (response.data.success) {
-      setOrders(response.data.data);
+      setOrders(response.data.data.reverse());
     } else {
       toast.error("Error");
     }
   };
 
   const statusHandler = async (event, orderId) => {
+    console.log(event, orderId);
     const response = await axios.post(`${url}/api/order/status`, {
       orderId,
       status: event.target.value,
     });
     if (response.data.success) {
       await fetchAllOrders();
-    } else {
-      toast.error("Error");
     }
   };
 
@@ -43,14 +42,14 @@ const Orders = ({ url }) => {
               <p className="order-item-food">
                 {order.items.map((item, index) => {
                   if (index === order.items.length - 1) {
-                    return item.name + " + " + item.quantity;
+                    return item.name + " x " + item.quantity;
                   } else {
-                    return item.name + " + " + item.quantity + ", ";
+                    return item.name + " x " + item.quantity + ", ";
                   }
                 })}
               </p>
               <p className="order-item-name">
-                {order.address.firstname + " " + order.address.lastname}
+                {order.address.firstName + " " + order.address.lastName}
               </p>
               <div className="order-item-address">
                 <p>{order.address.street + ","}</p>
@@ -61,15 +60,22 @@ const Orders = ({ url }) => {
                     ", " +
                     order.address.country +
                     ", " +
-                    order.address.zipcode +
-                    ","}
+                    order.address.zipcode}
                 </p>
               </div>
               <p className="order-item-phone">{order.address.phone}</p>
             </div>
-            <p>Items: {order.items.length}</p>
-            <p>Amount: ${order.amount}</p>
-            <select onChange={(e) => statusHandler(e, order._id)} value={order.status}>
+            <p>Items : {order.items.length}</p>
+            <p>
+              {currency}
+              {order.amount}
+            </p>
+            <select
+              onChange={(e) => statusHandler(e, order._id)}
+              value={order.status}
+              name=""
+              id=""
+            >
               <option value="Food Processing">Food Processing</option>
               <option value="Out for delivery">Out for delivery</option>
               <option value="Delivered">Delivered</option>
@@ -80,4 +86,5 @@ const Orders = ({ url }) => {
     </div>
   );
 };
-export default Orders;
+
+export default Order;
